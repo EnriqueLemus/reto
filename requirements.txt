@@ -1,0 +1,9 @@
+emoji
+pickle
+pandas
+numpy
+streamlit
+seaborn
+scikit-learn
+plotly
+matplotlib
