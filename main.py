@@ -234,8 +234,10 @@ def datos():
     st.write("*Skewness* indica la tendencia u orientación de la distribución de la curva. Un valor de Skewness de o cercano a 0 corresponde a una distribución normal. Por otra parte, un valor menor a 0 resulta en un skewness positivo, una distribución cargada a la izquierda. Un valor de Skewness mayor a 1, indica un Skewness negativo, es decir una distribución cargada a la derecha.")
     st.write("*Kurtosis* representa qué tan 'puntiaguda' es la distribución. Un valor alto de Kurtosis indica una mayor concentración de valores en el promedio (punta) de la distribución. Un valor de 0 o muy cercano, supone una distribución normal, un calor mayor a 0 es una distribución muy puntiaguda, mientras que un valor menor a 0 es una distribución muy plana/alargada")
 
-    skewnessdf = df.skew()
-    kurtosisdf = df.kurt() 
+    numeric_columns = df.select_dtypes(include=[np.number]).columns
+    skewnessdf = df[numeric_columns].skew()
+    kurtosisdf = df[numeric_columns].kurt()
+ 
     col20, col21, col22, col23 = st.columns(4)
 
     col21.write(skewnessdf.to_frame().rename(columns={0: "Skewness"}), unsafe_allow_html=True)
