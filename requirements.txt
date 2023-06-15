@@ -1,5 +1,4 @@
 emoji
-pickle
 pandas
 numpy
 streamlit
